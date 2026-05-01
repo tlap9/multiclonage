@@ -10,13 +10,22 @@ in
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
+      boot.initrd.luks.devices."dm_crypt-0" = {
+        device = "/dev/disk/by-uuid/86d34325-0759-418b-8796-c946ed5f2800";
+      };
+
       fileSystems."/" = {
-        device = "/dev/disk/by-label/nixos";
+        device = "/dev/disk/by-uuid/81a89763-776e-4003-a848-41ca7f3401b1";
         fsType = "ext4";
       };
 
       fileSystems."/boot" = {
-        device = "/dev/disk/by-label/boot";
+        device = "/dev/disk/by-uuid/c40a555c-35c5-4b67-9506-eeefc89ed35e";
+        fsType = "ext4";
+      };
+
+      fileSystems."/boot/efi" = {
+        device = "/dev/disk/by-uuid/482A-419E";
         fsType = "vfat";
       };
       networking.wireless.enable = true;
