@@ -22,8 +22,8 @@
   };
 
   # Custom options
-  config.flake.personalUsername = "tom";
-  config.flake.workUsername = "itla2990";
+  config.flake.username = "itla2990";
+  config.flake.personalUsername = "tlap9";
   config.flake.helpers = {
     # Get a file or a directory from the assets folder.
     mkAssetsPath = filename_or_dir: ../assets + "${filename_or_dir}";

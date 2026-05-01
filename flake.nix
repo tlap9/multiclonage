@@ -31,15 +31,14 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    niri.url = "github:sodiboo/niri-flake";
-    niri.inputs.nixpkgs.follow = "nixpkgs";
-
-    niri-scratchpad.url = "github:gvolpe/niri-scratchpad";
-    niri-scratchpad.inputs.nixpkgs.follows = "nixpkgs";
-
     opencode.url = "github:sst/opencode";
 
     vicinae.url = "github:vicinaehq/vicinae";
+
+    tree-sitter.url = "github:tree-sitter/tree-sitter";
+    tree-sitter.inputs.nixpkgs.follows = "nixpkgs";
+
+    zjstatus.url = "github:dj95/zjstatus";
 
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
