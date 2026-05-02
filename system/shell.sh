@@ -53,6 +53,7 @@ mkdir -p "${HOME}/.config"
 # zsh config
 _info "Linking zsh configs"
 ln -sf "${DIR}/configs/zsh/.zshrc" "${HOME}/.zshrc"
+ln -sf "${DIR}/configs/zsh/.zshenv" "${HOME}/.zshenv"
 ln -sfn "${DIR}/configs/zsh/.zsh_config" "${HOME}/.zsh_config"
 mkdir -p "${HOME}/.zsh_config"
 
