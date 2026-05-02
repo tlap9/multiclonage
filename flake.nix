@@ -31,6 +31,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixGL.url = "github:nix-community/nixGL";
+
     opencode.url = "github:sst/opencode";
 
     vicinae.url = "github:vicinaehq/vicinae";

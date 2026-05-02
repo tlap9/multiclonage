@@ -17,7 +17,24 @@ in
       config,
       ...
     }:
+    let
+      ghosttyWrapped = (config.lib.nixGL.wrap pkgs.ghostty).overrideAttrs (old: {
+        meta = (old.meta or { }) // { mainProgram = "ghostty"; };
+      });
+      ghosttyPackage =
+        if pkgs.stdenv.isDarwin then pkgs.ghostty-bin
+        else if config.targets.genericLinux.enable then ghosttyWrapped
+        else pkgs.ghostty;
+    in
     {
+      targets.genericLinux = {
+        enable = pkgs.stdenv.isLinux;
+        nixGL = {
+          packages = inputs.nixGL.packages.${pkgs.stdenv.hostPlatform.system};
+          defaultWrapper = "nvidia";
+        };
+      };
+
       home.file."${helpers.mkHomePath config "/Scripts"}" = {
         source = helpers.mkAssetsPath "/scripts";
         recursive = true;
@@ -47,7 +64,7 @@ in
 
       programs.ghostty = {
         enable = true;
-        package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+        package = ghosttyPackage;
         enableZshIntegration = true;
         settings = {
           macos-titlebar-style = "hidden";
