@@ -8,11 +8,6 @@
     default = { };
   };
 
-  # Allow host files to define Home Manager outputs for non-NixOS systems.
-  options.flake.homeConfigurations = lib.mkOption {
-    type = lib.types.attrsOf lib.types.raw;
-    default = { };
-  };
 
   # Custom types
   options.flake.username = lib.mkOption {
