@@ -2,26 +2,13 @@
 let
   username = config.flake.username;
   helpers = config.flake.helpers;
-  overlays = [
-    (final: prev: {
-      zjstatus = inputs.zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
-    })
-  ];
 in
 {
   flake.modules.nixos.terminal =
     { pkgs, ... }:
     {
-      console.useXkbConfig = true;
-      programs.zsh.enable = true;
       users.users.${username}.shell = pkgs.zsh;
-
-      nixpkgs.overlays = overlays;
     };
-
-  flake.modules.darwin.terminal = {
-    nixpkgs.overlays = overlays;
-  };
 
   flake.modules.homeManager.terminal =
     {
@@ -31,10 +18,6 @@ in
       ...
     }:
     {
-      home.packages = with pkgs; [
-        zjstatus
-      ];
-
       home.file."${helpers.mkHomePath config "/Scripts"}" = {
         source = helpers.mkAssetsPath "/scripts";
         recursive = true;
