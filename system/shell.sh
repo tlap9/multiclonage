@@ -20,10 +20,14 @@ sudo apt-get install -y \
 		jq \
 		zsh \
 		vim \
-        bat 
+        bat \
+        fzf
 
 # Starship is only available through apt for Ubuntu 25.04+, while Zenbook FT is on 24.04 we install it through the official install script which is compatible with both versions
 curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+# Zoxide advice is to use the install script instead of snap
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # Step 2 : Shell configuration
 

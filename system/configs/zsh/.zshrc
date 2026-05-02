@@ -16,6 +16,7 @@ ZSH_THEME=""
 
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
+eval "$(zoxide init zsh)"
 
 source $HOME/.zsh_config/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh_config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
