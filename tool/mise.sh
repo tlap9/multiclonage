@@ -9,3 +9,5 @@ sudo snap install mise --classic
 mkdir -p "${HOME}/.config/mise"
 
 ln -sf "${DIR}/configs/mise/mise.toml" "${HOME}/.config/mise/mise.toml"
+
+mise install
