@@ -8,4 +8,4 @@ sudo snap install ghostty --classic
 
 mkdir -p "${HOME}/.config/ghostty"
 
-cp -f "${DIR}/configs/ghostty/config.ghostty" "${HOME}/.config/ghostty/config.ghostty"
+ln -sf "${DIR}/configs/ghostty/config.ghostty" "${HOME}/.config/ghostty/config.ghostty"

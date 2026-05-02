@@ -1,0 +1,4 @@
+*.log
+dist/
+**/zsh-syntax-highlighting/
+**/zsh-autosuggestions/
