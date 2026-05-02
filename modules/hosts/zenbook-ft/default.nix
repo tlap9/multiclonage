@@ -3,6 +3,10 @@ let
   nixos = config.flake.modules.nixos;
   username = config.flake.username;
   hm = config.flake.modules.homeManager;
+  linuxPkgs = import inputs.nixpkgs {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
 in
 {
   flake.nixosConfigurations.zenbook-ft = inputs.nixpkgs.lib.nixosSystem {
@@ -28,4 +32,14 @@ in
       }
     ];
   };
+
+  flake.homeConfigurations."${username}@zenbook-ft" =
+    inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = linuxPkgs;
+      modules = [
+        hm.itla2990
+        hm.coding
+        hm.terminal
+      ];
+    };
 }
