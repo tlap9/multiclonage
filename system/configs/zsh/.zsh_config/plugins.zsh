@@ -7,6 +7,7 @@ plugins=(
     kube-ps1
     mise
     ng
+    direnv
 )
 
 # Configure kube-ps1

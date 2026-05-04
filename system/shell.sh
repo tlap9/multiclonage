@@ -21,7 +21,8 @@ sudo apt-get install -y \
 		zsh \
 		vim \
         bat \
-        fzf
+        fzf \
+		direnv
 
 # Starship is only available through apt for Ubuntu 25.04+, while Zenbook FT is on 24.04 we install it through the official install script which is compatible with both versions
 curl -sS https://starship.rs/install.sh | sh -s -- -y
