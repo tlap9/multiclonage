@@ -77,6 +77,18 @@ if [[ ! -d ${HOME}/.zsh_config/zsh-syntax-highlighting ]]; then
 	git clone "${GITHUB}/zsh-users/zsh-syntax-highlighting" "$HOME/.zsh_config/zsh-syntax-highlighting"
 fi
 
+### Work plugin conf - this is pretty specific, so delete it if you don't need it
+LIFT_SOURCE_PATH="$HOME/.local/share/pipx/venvs/liftcli"
+if [[ -d "$LIFT_SOURCE_PATH" ]]; then
+	_info "Linking liftcli to zsh plugins"
+	mkdir -p "${HOME}/.oh-my-zsh/custom/plugins/lift"
+	rm -f "${HOME}/.oh-my-zsh/plugins/lift"
+	ln -sf "$LIFT_SOURCE_PATH/shell/oh-my-zsh/lift.plugin.zsh" "${HOME}/.oh-my-zsh/custom/plugins/lift/lift.plugin.zsh"
+else
+	_info "liftcli not found at $LIFT_SOURCE_PATH, skipping plugin link"
+fi
+###
+
 # starship config
 _info "Linking starship configs"
 ln -sf "${DIR}/configs/starship/starship.toml" "${HOME}/.config/starship.toml"

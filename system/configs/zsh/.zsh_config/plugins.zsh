@@ -8,6 +8,7 @@ plugins=(
     mise
     ng
     direnv
+    lift # work specific plugin, delete if not needed
 )
 
 # Configure kube-ps1
