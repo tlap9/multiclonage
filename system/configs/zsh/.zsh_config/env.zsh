@@ -19,3 +19,12 @@ export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/snap/multipass/common/bin:${PATH}"
 export PATH="${HOME}/.opencode/bin:${PATH}"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH=$PATH:/snap/bin
+
+# pnpm
+export PNPM_HOME="/home/itla2990/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
