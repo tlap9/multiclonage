@@ -81,9 +81,15 @@ fi
 LIFT_SOURCE_PATH="$HOME/.local/share/pipx/venvs/liftcli"
 if [[ -d "$LIFT_SOURCE_PATH" ]]; then
 	_info "Linking liftcli to zsh plugins"
+	lift_plugin_source="$LIFT_SOURCE_PATH/shell/oh-my-zsh/lift.plugin.zsh"
+	lift_plugin_target="${HOME}/.oh-my-zsh/custom/plugins/lift/lift.plugin.zsh"
 	mkdir -p "${HOME}/.oh-my-zsh/custom/plugins/lift"
 	rm -f "${HOME}/.oh-my-zsh/plugins/lift"
-	ln -sf "$LIFT_SOURCE_PATH/shell/oh-my-zsh/lift.plugin.zsh" "${HOME}/.oh-my-zsh/custom/plugins/lift/lift.plugin.zsh"
+	if [[ -e "$lift_plugin_target" ]] && [[ "$(readlink -f "$lift_plugin_source")" == "$(readlink -f "$lift_plugin_target")" ]]; then
+		_info "liftcli plugin already linked, skipping"
+	else
+		ln -sfn "$lift_plugin_source" "$lift_plugin_target"
+	fi
 else
 	_info "liftcli not found at $LIFT_SOURCE_PATH, skipping plugin link"
 fi
