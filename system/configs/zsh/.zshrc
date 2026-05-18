@@ -21,3 +21,7 @@ eval "$(direnv hook zsh)"
 
 source $HOME/.zsh_config/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh_config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+export PATH=$PATH:/snap/bin
